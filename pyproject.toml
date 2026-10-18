@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "planner2d"
+version = "0.1.0"
+description = "PRM, RRT, Bi-RRT and path shortcutting for the osrobotics 2D planning exercises"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.22", "scipy>=1.8", "matplotlib>=3.5"]
+
+[project.optional-dependencies]
+dev = ["pytest>=7", "ruff>=0.4"]
+
+[tool.setuptools]
+packages = ["planner2d"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = [".", "tests"]
+
+[tool.ruff]
+line-length = 100
+extend-exclude = ["planner2d/environment_2d.py"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "NPY"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["planner2d", "conftest"]
